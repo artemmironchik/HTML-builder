@@ -40,7 +40,7 @@ async function buildNewPage(inputFolder, outputFolder) {
   const componentsHtml = {}
   const components = await fsPromises.readdir(getPath('components'))
   for(let component of components) {
-    componentsHtml[`{{${path.parse(component).name}}}`] = await (await fsPromises.readFile(path.join(getPath('components'), component))).toString()
+    componentsHtml[`{{${path.parse(component).name}}}`] = (await fsPromises.readFile(path.join(getPath('components'), component))).toString()
   }
   
   const componentsToBeReplaced = Object.keys(componentsHtml)
